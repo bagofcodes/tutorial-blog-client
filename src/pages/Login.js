@@ -12,7 +12,7 @@ function Login() {
     const navigate= useNavigate();
 
     const loginHandle = ()=>{
-        axios.post("http://localhost:5000/auth/login", {
+        axios.post("https://tutorial-blog-server.herokuapp.com/auth/login", {
             username:username,
             password:password
         }).then((response)=>{

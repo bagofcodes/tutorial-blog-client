@@ -12,11 +12,11 @@ export default function ProfilePage() {
     let navigate = useNavigate();
 
     useEffect(()=>{
-        axios.get(`http://localhost:5000/auth/profile/${id}`).then((response)=>{
+        axios.get(`https://tutorial-blog-server.herokuapp.com/auth/profile/${id}`).then((response)=>{
             setUsername(response.data.username);
         })
 
-        axios.get(`http://localhost:5000/posts/byuserId/${id}`).then((response)=>{
+        axios.get(`https://tutorial-blog-server.herokuapp.com/posts/byuserId/${id}`).then((response)=>{
             setListOfPosts(response.data);
         })
 

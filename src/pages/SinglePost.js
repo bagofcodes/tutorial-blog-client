@@ -15,19 +15,19 @@ function SinglePost() {
 
 
     useEffect(()=>{
-        axios.get(`http://localhost:5000/posts/byId/${id}`).then((response)=>{
+        axios.get(`https://tutorial-blog-server.herokuapp.com/posts/byId/${id}`).then((response)=>{
             setPostObject(response.data);
         })
     
       },[id]);
     useEffect(()=>{
-        axios.get(`http://localhost:5000/comments/${id}`).then((response)=>{
+        axios.get(`https://tutorial-blog-server.herokuapp.com/comments/${id}`).then((response)=>{
             setComments(response.data);
         })
     },[id]);
 
     const addComment = ()=>{
-        axios.post("http://localhost:5000/comments/", {commentBody: comment, PostId: id,},
+        axios.post("https://tutorial-blog-server.herokuapp.com/comments/", {commentBody: comment, PostId: id,},
         {headers: {accessToken: localStorage.getItem("accesstoken")} }
         ).then((response)=>{
             if(response.data.error){
@@ -42,7 +42,7 @@ function SinglePost() {
     };
 
     const deleteComment = (id)=>{
-        axios.delete(`http://localhost:5000/comments/${id}`, {headers: {accessToken: localStorage.getItem("accesstoken")}}).then(()=>{
+        axios.delete(`https://tutorial-blog-server.herokuapp.com/comments/${id}`, {headers: {accessToken: localStorage.getItem("accesstoken")}}).then(()=>{
             setComments(comments.filter((val)=>{
                 return val.id !== id;
             }))
@@ -52,7 +52,7 @@ function SinglePost() {
 
 
     const deletePost= (id)=>{
-        axios.delete(`http://localhost:5000/posts/${id}`, {headers: {accessToken: localStorage.getItem("accesstoken")}}).then(()=>{
+        axios.delete(`https://tutorial-blog-server.herokuapp.com/posts/${id}`, {headers: {accessToken: localStorage.getItem("accesstoken")}}).then(()=>{
             console.log("Deleted Post Successfully");
             nav("/");
 
@@ -63,14 +63,14 @@ function SinglePost() {
     const editPost = (option)=>{
         if(option === "title"){
             let newTitle = prompt("Enter new Title");
-            axios.put("http://localhost:5000/posts/title",{newTitle: newTitle, id: id},
+            axios.put("https://tutorial-blog-server.herokuapp.com/posts/title",{newTitle: newTitle, id: id},
             {headers: {accessToken: localStorage.getItem("accesstoken")}}).then((response)=>{
                 setPostObject({...postObject,title : newTitle});
             })
         }
         else{
             let newPostText = prompt("Edit your Text");
-            axios.put("http://localhost:5000/posts/title",{newText: newPostText, id: id},
+            axios.put("https://tutorial-blog-server.herokuapp.com/posts/title",{newText: newPostText, id: id},
             {headers: {accessToken: localStorage.getItem("accesstoken")}}).then((response)=>{
                 setPostObject({...postObject,postText : newPostText});
             })

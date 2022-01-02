@@ -7,7 +7,7 @@ export default function ChangePassword() {
 
 
     const changePassword=()=>{
-        axios.put(`http://localhost:5000/auth/changePassword/`,
+        axios.put(`https://tutorial-blog-server.herokuapp.com/auth/changePassword/`,
         {
             oldPassword: oldPassword,
             newPassword: newPassword,

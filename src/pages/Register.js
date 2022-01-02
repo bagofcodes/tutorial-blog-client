@@ -18,7 +18,7 @@ function Register() {
     const navigate= useNavigate();
 
     const onSubmit = (data)=>{
-        axios.post("http://localhost:5000/auth", data).then((response)=>{
+        axios.post("https://tutorial-blog-server.herokuapp.com/auth", data).then((response)=>{
             navigate("/login");
         })
     }

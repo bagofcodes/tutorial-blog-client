@@ -23,7 +23,7 @@ function App() {
   
 
   useEffect(()=>{
-    axios.get("http://localhost:5000/auth/auth",{
+    axios.get("https://tutorial-blog-server.herokuapp.com/auth/auth",{
       headers: {
         accessToken: localStorage.getItem("accesstoken"),
       },

@@ -18,7 +18,7 @@ function CreatePost() {
     const navigate= useNavigate();
 
     const onSubmit = (data)=>{
-        axios.post("http://localhost:5000/posts", data,{headers: {accessToken: localStorage.getItem("accesstoken")}}).then((response)=>{
+        axios.post("https://tutorial-blog-server.herokuapp.com/posts", data,{headers: {accessToken: localStorage.getItem("accesstoken")}}).then((response)=>{
             navigate("/");
         })
     }

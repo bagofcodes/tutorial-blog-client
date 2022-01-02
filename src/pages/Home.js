@@ -18,7 +18,7 @@ function Home() {
         history("/login");
       }
       else{
-        axios.get("http://localhost:5000/posts",{headers: {accessToken: localStorage.getItem("accesstoken")}}).then((response)=>{
+        axios.get("https://tutorial-blog-server.herokuapp.com/posts",{headers: {accessToken: localStorage.getItem("accesstoken")}}).then((response)=>{
         setPostList(response.data.listPost);
         setLikedPosts((response.data.likedPosts).map((like)=>like.PostId));
       })
@@ -26,7 +26,7 @@ function Home() {
       }},[]);
 
     const postALike = (postId)=>{
-      axios.post("http://localhost:5000/likes",{PostId: postId},{headers: {accessToken: localStorage.getItem("accesstoken")}}).then((response)=>{
+      axios.post("https://tutorial-blog-server.herokuapp.com/likes",{PostId: postId},{headers: {accessToken: localStorage.getItem("accesstoken")}}).then((response)=>{
         setPostList(postList.map((post)=>{
           if(post.id === postId){
             if(response.data.liked){
